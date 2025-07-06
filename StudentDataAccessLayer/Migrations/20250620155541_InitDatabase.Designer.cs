@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StudentDomainLayer.Models;
+using StudentDataAccessLayer.Models;
 
 #nullable disable
 
-namespace StudentDomainLayer.Migrations
+namespace StudentDataAccessLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250620155541_InitDatabase")]

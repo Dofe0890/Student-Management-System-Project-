@@ -1,9 +1,9 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
-using StudentDomainLayer.Models;
+using StudentDataAccessLayer.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace StudentDomainLayer.Models
+namespace StudentDataAccessLayer.Models
 {
     public class ApplicationUser:IdentityUser
     {

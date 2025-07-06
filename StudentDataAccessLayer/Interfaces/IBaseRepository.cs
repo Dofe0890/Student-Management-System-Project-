@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-namespace StudentDomainLayer.Interfaces
+namespace StudentDataAccessLayer.Interfaces
 {
     public interface IBaseRepository<T> where T : class
     {
@@ -16,6 +16,7 @@ namespace StudentDomainLayer.Interfaces
         Task<T> Find(Expression<Func<T, bool>> criteria);
         Task<IEnumerable <T>> FindAll(Expression<Func<T, bool>> criteria ,int? skip , int? take );
         Task<IEnumerable<T>> FindAll(Expression<Func<T, bool>> criteria, int? skip, int? take,Expression<Func<T,object>> orderBy = null , string OrderByDirection = "ASC" );
+        Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
 
     }
 }

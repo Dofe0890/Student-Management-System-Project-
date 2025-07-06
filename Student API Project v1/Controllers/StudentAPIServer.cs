@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StudentBusinessLayer.Services;
-using StudentDomainLayer.Models;
-using Models = StudentDomainLayer.Models;
+using StudentDataAccessLayer.Models;
+using Models = StudentDataAccessLayer.Models;
 using StudentBusinessLayer.Interfaces;
 using StudentBusinessLayer.DTOs;
 using StudentBusinessLayer.Model;

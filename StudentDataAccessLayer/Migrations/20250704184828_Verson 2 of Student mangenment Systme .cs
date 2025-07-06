@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace StudentDomainLayer.Migrations
+namespace StudentDataAccessLayer.Migrations
 {
     /// <inheritdoc />
     public partial class Verson2ofStudentmangenmentSystme : Migration
@@ -201,7 +201,7 @@ namespace StudentDomainLayer.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Teachers_UserID",
                 table: "Teachers",
-                column: "UserID");
+                column: "UserId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Students_Classrooms_ClassroomId",

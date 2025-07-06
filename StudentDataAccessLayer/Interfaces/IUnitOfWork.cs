@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StudentDomainLayer.Models;
-namespace StudentDomainLayer.Interfaces
+using StudentDataAccessLayer.Models;
+namespace StudentDataAccessLayer.Interfaces
 {
     public interface IUnitOfWork:IDisposable
     {
         IBaseRepository<Student> Students { get; }
-
-       Task<int>  Complete();
+        IBaseRepository<Teacher > Teachers { get; }
+        IBaseRepository<Subject> Subjects { get;}
+        IBaseRepository<Classroom> Classrooms { get; }
+        IBaseRepository<TeacherClass> TeacherClasses { get; }
+        IBaseRepository<Grade> Grades { get; }
+        IBaseRepository<Attendance> Attendance { get; }
+        Task<int>  Complete();
+        Task BeginTransactionAsync();
+        Task CommitTransactionAsync();
+        Task RollbackTransactionAsync();
 
     }
 }

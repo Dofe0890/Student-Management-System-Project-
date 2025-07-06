@@ -5,10 +5,10 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using StudentDomainLayer.Interfaces;
-using StudentDomainLayer.Models;
+using StudentDataAccessLayer.Interfaces;
+using StudentDataAccessLayer.Models;
 
-namespace StudentDomainLayer.Repository
+namespace StudentDataAccessLayer.Repository
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
@@ -101,6 +101,11 @@ namespace StudentDomainLayer.Repository
             }
             
             return await query.ToListAsync();
+        }
+
+        public async Task<bool> AnyAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _context.Set<T>().AnyAsync(predicate);
         }
     }
 }

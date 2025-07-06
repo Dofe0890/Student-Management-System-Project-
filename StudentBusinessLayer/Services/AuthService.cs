@@ -7,7 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Security.Cryptography;
-using StudentDomainLayer.Models;
+using StudentDataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace StudentBusinessLayer.Services
@@ -77,6 +77,7 @@ namespace StudentBusinessLayer.Services
                 Username = User.UserName,
                 RefreshToken = refreshToken.Token,
                 RefreshTokenExpiration = refreshToken.ExpireOn,
+                UserId = User.Id
             };
 
         }
@@ -134,7 +135,7 @@ namespace StudentBusinessLayer.Services
 
             if(user==null)
             {
-                return "Invalid UserID please try valid Id";
+                return "Invalid UserId please try valid Id";
             }
 
             if(!await _roleManager.RoleExistsAsync(model.Role))

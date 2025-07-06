@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentDomainLayer.Models
+namespace StudentDataAccessLayer.Models
 {
     public  class Classroom
     {

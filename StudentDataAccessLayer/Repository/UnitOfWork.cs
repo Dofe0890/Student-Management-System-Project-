@@ -1,17 +1,18 @@
-﻿using StudentDomainLayer.Interfaces;
-using StudentDomainLayer.Models;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using StudentDataAccessLayer.Interfaces;
+using StudentDataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentDomainLayer.Repository
+namespace StudentDataAccessLayer.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _context;
-
+        private  IDbContextTransaction _transaction;
         public IBaseRepository<Student> Students { get; private set; }
         public IBaseRepository<Teacher> Teachers { get; private set; }
         public IBaseRepository<Subject > Subjects { get; private set; }
@@ -40,7 +41,23 @@ namespace StudentDomainLayer.Repository
 
         public void Dispose()
         {
+            _transaction?.Dispose();
             _context.Dispose();
+        }
+
+        public async Task BeginTransactionAsync()
+        {
+            _transaction =await  _context.Database.BeginTransactionAsync();
+        }
+
+        public async Task CommitTransactionAsync()
+        {
+            await _transaction?.CommitAsync();
+        }
+
+        public async Task RollbackTransactionAsync()
+        {
+          await  _transaction ?.RollbackAsync();
         }
     }
 }

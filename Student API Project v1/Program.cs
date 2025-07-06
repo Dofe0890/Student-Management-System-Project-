@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using StudentDomainLayer.Models;
+using StudentDataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using StudentBusinessLayer.Interfaces;
-using StudentDomainLayer.Repository;
+using StudentDataAccessLayer.Repository;
 using StudentBusinessLayer.Services;
 using StudentBusinessLayer.Helper;
-using StudentDomainLayer.Interfaces;
+using StudentDataAccessLayer.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +28,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-options.UseSqlServer(connectionString,b => b.MigrationsAssembly("StudentDomainLayer")
+options.UseSqlServer(connectionString,b => b.MigrationsAssembly("StudentDataAccessLayer")
 ));
 
 

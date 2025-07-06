@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StudentDomainLayer.Interfaces;
-using StudentDomainLayer.Repository;
-using StudentDomainLayer.Models;
-using StudentDomainLayer;
+using StudentDataAccessLayer.Interfaces;
+using StudentDataAccessLayer.Repository;
+using StudentDataAccessLayer.Models;
+using StudentDataAccessLayer;
 using StudentBusinessLayer.Interfaces;
 using StudentBusinessLayer.DTOs;
 using Microsoft.EntityFrameworkCore;
@@ -83,10 +83,7 @@ namespace StudentBusinessLayer.Services
 
 
 
-        //public double GetAverageGrade()
-        //{
-        //    return _studentData.GetAverageGrade();
-        //}
+
 
 
     }

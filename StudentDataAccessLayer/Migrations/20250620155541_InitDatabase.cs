@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace StudentDomainLayer.Migrations
+namespace StudentDataAccessLayer.Migrations
 {
     /// <inheritdoc />
     public partial class InitDatabase : Migration

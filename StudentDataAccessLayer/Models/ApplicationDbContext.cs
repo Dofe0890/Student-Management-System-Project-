@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentDomainLayer.Models
+namespace StudentDataAccessLayer.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -31,6 +31,9 @@ namespace StudentDomainLayer.Models
                .HasOne(t => t.Classroom)
                .WithMany(t => t.TeacherClasses)
                .HasForeignKey(t => t.ClassroomID);
+
+            modelBuilder.Entity<Teacher>()
+                .HasIndex(t => t.UserId).IsUnique();
 
 
         }

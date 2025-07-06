@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace StudentDomainLayer.Migrations
+namespace StudentDataAccessLayer.Migrations
 {
     /// <inheritdoc />
     public partial class RemoveGradeID : Migration

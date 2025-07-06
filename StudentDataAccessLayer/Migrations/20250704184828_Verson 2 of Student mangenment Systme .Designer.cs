@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StudentDomainLayer.Models;
+using StudentDataAccessLayer.Models;
 
 #nullable disable
 
-namespace StudentDomainLayer.Migrations
+namespace StudentDataAccessLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250704184828_Verson 2 of Student mangenment Systme ")]
@@ -372,7 +372,7 @@ namespace StudentDomainLayer.Migrations
                     b.Property<int>("SubjectID")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserID")
+                    b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -380,7 +380,7 @@ namespace StudentDomainLayer.Migrations
 
                     b.HasIndex("SubjectID");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Teachers");
                 });
@@ -547,7 +547,7 @@ namespace StudentDomainLayer.Migrations
 
                     b.HasOne("StudentDataAccess.Model.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserID")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
