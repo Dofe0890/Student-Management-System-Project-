@@ -12,5 +12,7 @@ namespace StudentBusinessLayer.Services
         Task<string> AddRoleAsync(AddRoleModel model);
         Task<AuthModel> RefreshTokenAsync(string token);
         Task<bool> RevokeTokenAsync(string token);
+        Task<AuthModel> RegisterAdminAsync(RegisterModel model);
+        Task<bool> DeleteUserByIdAsync(string userId);
     }
 }

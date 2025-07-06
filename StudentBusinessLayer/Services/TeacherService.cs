@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using StudentBusinessLayer.DTOs;
 
 namespace StudentBusinessLayer.Services
 {
@@ -36,9 +37,6 @@ namespace StudentBusinessLayer.Services
 
             if (!exists)
             {
-
-
-
                 await _unitOfWork.Teachers.AddRecordAsync(teacher);
                 await _unitOfWork.Complete();
 
@@ -55,7 +53,8 @@ namespace StudentBusinessLayer.Services
             bool isDeleted = await _unitOfWork.Teachers.DeleteByIdAsync(id);
 
             if(isDeleted)
-              {  await _unitOfWork.Complete();
+            {
+                await _unitOfWork.Complete();
                 return true;
             }
             else
@@ -64,11 +63,20 @@ namespace StudentBusinessLayer.Services
             }
         }
 
-        public async Task<bool> EditTeacher(int id, Teacher updatedTeacher)
+        public async Task<bool> EditTeacher(int id, TeacherDTO updatedTeacher)
         {
-            var existingTeacher = await  _unitOfWork.Teachers.GetByIDAsync(id);
+            var existingTeacher = await _unitOfWork.Teachers.GetByIDAsync(id);
+            if (existingTeacher != null )
+            {
 
-            return await  _unitOfWork.Teachers.UpdateAsync(updatedTeacher);
+                existingTeacher.Name = updatedTeacher.Name;
+                existingTeacher.SubjectID = updatedTeacher.SubjectID;
+                await _unitOfWork.Teachers.UpdateAsync(existingTeacher);
+                await _unitOfWork.Complete();
+                return true;
+            }
+            else
+                return false;
         }
 
 

@@ -11,7 +11,7 @@ namespace StudentBusinessLayer.Interfaces
     public interface ITeacherService
     {
         Task<Teacher> GetTeacherById(int id);
-        Task<bool> EditTeacher(int id, Teacher updatedTeacher);
+        Task<bool> EditTeacher(int id, TeacherDTO updatedTeacher);
         Task<bool> DeleteTeacher(int id);
         Task<Teacher> AddNewTeacher(Teacher  teacher);
         Task<IEnumerable<Teacher>> GetAllTeachers();

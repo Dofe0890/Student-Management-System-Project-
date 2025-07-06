@@ -9,6 +9,7 @@ using System.Text;
 using System.Security.Cryptography;
 using StudentDataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 
 namespace StudentBusinessLayer.Services
 {
@@ -274,6 +275,38 @@ namespace StudentBusinessLayer.Services
 
 
             return true;
+        }
+
+        public async Task<AuthModel> RegisterAdminAsync(RegisterModel model)
+        {
+            var existingAdmin = await _userManager.GetUsersInRoleAsync("Admin");
+
+            foreach (var admin in existingAdmin)
+            {
+               await _userManager.RemoveFromRoleAsync(admin, "Admin");
+            }
+
+            var result = await RegisterAsync(model);
+            if(!result.IsAuthenticated )
+                return result;
+
+            var user = await _userManager.FindByIdAsync (result .UserId);
+            await _userManager.AddToRoleAsync(user, "Admin");
+            return result;
+        }
+
+        public async Task<bool> DeleteUserByIdAsync(string userId)
+        {
+            var user = await  _userManager.FindByIdAsync (userId);
+            if (user != null)
+            {
+                var result = await _userManager.DeleteAsync(user);
+                return result.Succeeded;
+
+            }
+            else
+                return false;
+             
         }
     }
 }
