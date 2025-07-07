@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace StudentBusinessLayer.Services
 {
-    internal class UserManagementService : IUserManagementService
+    public class UserManagementService : IUserManagementService
     {
         private readonly IAuthService _authService;
         private readonly ITeacherService _teacherService;

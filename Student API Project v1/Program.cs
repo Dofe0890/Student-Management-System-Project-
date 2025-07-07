@@ -68,6 +68,8 @@ builder.Services.AddAuthentication(option =>
 builder.Services.AddScoped<IUnitOfWork , UnitOfWork>();
 builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ITeacherService, TeacherService>();
+builder.Services.AddScoped<IUserManagementService, UserManagementService>();
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
 
