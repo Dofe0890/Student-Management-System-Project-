@@ -20,15 +20,15 @@ namespace StudentBusinessLayer.Services
         }
         public async Task<Teacher> GetTeacherByName(string name)
         {
-            return await _unitOfWork.Teachers.Find(s=>s.Name == name );
+            return await _unitOfWork.Teachers.FindAsync(s=>s.Name == name );
         }
         public async Task<Teacher> GetTeacherById(int id)
         {
-            return await _unitOfWork.Teachers.Find (s=>s.Id== id);
+            return await _unitOfWork.Teachers.FindAsync (s=>s.Id== id);
         }
         public async Task<IEnumerable<Teacher>> GetAllTeachers()
         {
-            return await _unitOfWork.Teachers.GetAll();
+            return await _unitOfWork.Teachers.GetAllAsync();
         }
 
         public async Task<Teacher> AddNewTeacher(Teacher teacher)

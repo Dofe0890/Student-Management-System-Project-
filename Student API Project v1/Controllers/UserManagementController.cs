@@ -73,14 +73,10 @@ namespace Student_API_Project_v1.Controllers
 
 
             if (await _userManagementService.DeleteTeacherAsync(ID))
-                return Ok($"StudentLogic with ID {ID} has been deleted.");
+                return Ok($"User with ID {ID} has been deleted.");
             else
-                return NotFound($"StudentLogic with ID {ID} not found. no rows deleted!");
+                return NotFound($"User with ID {ID} not found. no rows deleted!");
             }
-
-
-
-
 
 
 

@@ -76,18 +76,6 @@ namespace StudentManagementAPI.Controllers
 
 
 
-        //[HttpGet("AverageGrade", Name = "GetAverageGrade")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public async Task < ActionResult<double>> GetAverageGrade()
-        //{
-
-        //    double AverageGrade =   _studentLogic.GetAverageGrade();
-        //    return Ok(AverageGrade);
-        //}
-
-
-
 
         [HttpGet("{ID}", Name = "GetStudentByID")]
         [ProducesResponseType(StatusCodes.Status200OK)]

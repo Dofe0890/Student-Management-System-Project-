@@ -10,6 +10,6 @@ namespace StudentDataAccessLayer.Models
         public int ClassroomID { get; set; }
         public Classroom Classroom {get;set;}
 
-
+        public DateTime AssignedDate { get; set; }
     }
 }

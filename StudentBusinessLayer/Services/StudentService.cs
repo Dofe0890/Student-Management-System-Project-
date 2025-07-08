@@ -16,14 +16,11 @@ namespace StudentBusinessLayer.Services
 {
     public class StudentService : IStudentService
     {
-        readonly UserManager<ApplicationUser> _user;
-
         
         private readonly IUnitOfWork _unitOfWork;
 
-        public StudentService (IUnitOfWork unitOfWork , UserManager<ApplicationUser>user)
+        public StudentService (IUnitOfWork unitOfWork )
         {
-            _user = user;
             _unitOfWork = unitOfWork;
         }
 
@@ -55,12 +52,12 @@ namespace StudentBusinessLayer.Services
 
         public async Task<Student> GetStudentByName(string name)
         {
-          return await _unitOfWork.Students .Find(s=>s.Name == name);
+          return await _unitOfWork.Students .FindAsync(s=>s.Name == name);
         }
 
         public async Task<IEnumerable<Student>> GetAllStudents()
         {
-            return await _unitOfWork.Students.GetAll();
+            return await _unitOfWork.Students.GetAllAsync();
         }
 
        public async Task<Student> GetStudentById(int id)
@@ -70,20 +67,16 @@ namespace StudentBusinessLayer.Services
 
         public Task<IEnumerable<Student>> GetPassedStudents(int? skip , int? take)
         {
-            //      return _unitOfWork .Students.FindAll(s => s.Grade >= 50, skip , take );
+            //      return _unitOfWork .Students.FindAllAsync(s => s.Grade >= 50, skip , take );
             throw new Exception("not implement yet ");
         }
 
         public Task<IEnumerable<Student>> GetStudentsByAgeOrder(int? skip, int? take)
         {
-             return _unitOfWork .Students.FindAll(s=>s.ID>0 , skip , take ,b=>b.Age , "DESC");           
+             return _unitOfWork .Students.FindAllAsync(s=>s.ID>0 , skip , take ,b=>b.Age , "DESC");           
         }
 
-        
-
-
-
-
+    
 
 
     }

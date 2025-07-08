@@ -44,7 +44,7 @@ namespace StudentDataAccessLayer.Repository
             return true;
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _context.Set<T>().ToListAsync();
         }
@@ -61,12 +61,12 @@ namespace StudentDataAccessLayer.Repository
             return true;
         }
 
-        public async Task<T> Find(Expression<Func<T, bool>> criteria)
+        public async Task<T> FindAsync(Expression<Func<T, bool>> criteria)
         {
             return await _context.Set<T>().FirstOrDefaultAsync(criteria); 
         }
 
-        public async Task<IEnumerable<T>> FindAll(Expression<Func<T, bool>> criteria, int? skip, int? take)
+        public async Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>>? criteria, int? skip, int? take)
         {
             IQueryable<T> query = _context.Set<T>().Where(criteria);
 
@@ -79,7 +79,7 @@ namespace StudentDataAccessLayer.Repository
             return await query.ToListAsync();
         }
 
-        public async Task<IEnumerable<T>> FindAll(Expression<Func<T, bool>> criteria, int? skip, int? take, Expression<Func<T, object>> orderBy = null, string OrderByDirection = "ASC")
+        public async Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> criteria, int? skip, int? take, Expression<Func<T, object>> orderBy = null, string OrderByDirection = "ASC")
         {
             IQueryable<T> query = _context.Set<T>().Where(criteria);
 
@@ -106,6 +106,21 @@ namespace StudentDataAccessLayer.Repository
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> predicate)
         {
             return await _context.Set<T>().AnyAsync(predicate);
+        }
+
+        public async Task<int> Count(int id)
+        {
+            return await _context.Set<T>().CountAsync();
+        }
+
+        public async Task<int> Count(Expression<Func<T, bool>> predicate)
+        {
+            return await _context.Set<T>().CountAsync(predicate);
+        }
+
+        public IQueryable<T> Query()
+        {
+            return _context.Set<T>().AsQueryable();
         }
     }
 }
