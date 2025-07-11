@@ -27,12 +27,37 @@ namespace StudentBusinessLayer.Services
 
         public async Task<Student> AddNewStudent(Student student)
         {
-         return await _unitOfWork .Students.AddRecordAsync(student);
+           
+            if (student != null)
+            {
+                var result = await _unitOfWork.Students.AddRecordAsync(student);
+                await _unitOfWork.Complete();
+                return result  ;
+
+
+            }
+            else
+            {
+                return null; 
+            }
+          
         }
 
         public async Task<bool> DeleteStudent(int id)
         {
-          return await  _unitOfWork .Students.DeleteByIdAsync(id);
+            var student  = await  _unitOfWork.Students.GetByIDAsync(id);
+            if(student != null)
+            {
+                await _unitOfWork.Students.DeleteByIdAsync(id);
+                await _unitOfWork.Complete();
+                return true;
+
+
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public async Task<bool> EditStudent(int id, StudentDTO UpdatedStudent)
@@ -50,10 +75,6 @@ namespace StudentBusinessLayer.Services
             return await _unitOfWork.Complete() > 0;
         }
 
-        public async Task<Student> GetStudentByName(string name)
-        {
-          return await _unitOfWork.Students .FindAsync(s=>s.Name == name);
-        }
 
         public async Task<IEnumerable<Student>> GetAllStudents()
         {
@@ -65,17 +86,10 @@ namespace StudentBusinessLayer.Services
             return await _unitOfWork .Students.GetByIDAsync(id);
         }
 
-        public Task<IEnumerable<Student>> GetPassedStudents(int? skip , int? take)
-        {
-            //      return _unitOfWork .Students.FindAllAsync(s => s.Grade >= 50, skip , take );
-            throw new Exception("not implement yet ");
-        }
-
         public Task<IEnumerable<Student>> GetStudentsByAgeOrder(int? skip, int? take)
         {
              return _unitOfWork .Students.FindAllAsync(s=>s.ID>0 , skip , take ,b=>b.Age , "DESC");           
         }
-
     
 
 

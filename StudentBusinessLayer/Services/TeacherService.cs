@@ -38,7 +38,7 @@ namespace StudentBusinessLayer.Services
             if (!exists)
             {
                 await _unitOfWork.Teachers.AddRecordAsync(teacher);
-                await _unitOfWork.Complete();
+
 
                 return teacher;
             }

@@ -122,5 +122,10 @@ namespace StudentDataAccessLayer.Repository
         {
             return _context.Set<T>().AsQueryable();
         }
+
+        public Task<List<T>> ToListAsync()
+        {
+            return _context.Set<T>().ToListAsync();
+        }
     }
 }

@@ -20,6 +20,7 @@ namespace StudentDataAccessLayer.Interfaces
         Task<int> Count(int id);
         Task<int> Count(Expression<Func<T, bool>> predicate);
         IQueryable<T> Query();
+        Task<List<T>> ToListAsync();
 
     }
 }

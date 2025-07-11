@@ -22,6 +22,16 @@ namespace StudentBusinessLayer.Services
 
         public async Task<bool> AssignTeacherAsync(int classroomId, int teacherId)
         {
+            
+            var isTeacherExist = await _unitOfWork.Teachers.GetByIDAsync(teacherId);
+            var isClassroomExist = await _unitOfWork.Classrooms.GetByIDAsync(classroomId);
+
+            if(isClassroomExist  == null || isTeacherExist == null)
+            {
+                return false;
+            }
+
+
             var exist = await _unitOfWork.TeacherClasses.AnyAsync(c=>c.TeacherID == teacherId && c.ClassroomID == classroomId);
             if (!exist)
             {
@@ -69,6 +79,21 @@ namespace StudentBusinessLayer.Services
             }
         }
 
+        public async Task<bool> EditClassroomAsync(int classroomId , string newClassroomName)
+        {
+            var existClass = await _unitOfWork.Classrooms.GetByIDAsync(classroomId);
+            if (existClass != null)
+            {
+                existClass.Name = newClassroomName;
+                var result = await _unitOfWork.Classrooms.UpdateAsync(existClass);
+                await _unitOfWork.Complete();
+                return true;
+            }
+            else
+                return false;
+           
+        }
+
         public async Task<IEnumerable<Classroom>> GetAllClassesAsync()
         {
             return await _unitOfWork.Classrooms.GetAllAsync();
@@ -84,7 +109,10 @@ namespace StudentBusinessLayer.Services
 
         public async Task<Classroom> GetClassByName(string name)
         {
-           return await _unitOfWork.Classrooms.FindAsync(c => c.Name == name);
+           return await _unitOfWork.Classrooms.Query()
+                .Include(c => c.Students)
+                .Include(c => c.TeacherClasses)
+                .ThenInclude(tc => tc.Teacher).FirstOrDefaultAsync(s => s.Name == name);
         }
     }
 }

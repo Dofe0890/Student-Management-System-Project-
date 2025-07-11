@@ -9,6 +9,8 @@ using StudentDataAccessLayer.Repository;
 using StudentBusinessLayer.Services;
 using StudentBusinessLayer.Helper;
 using StudentDataAccessLayer.Interfaces;
+using StudentBusinessLayer.Mappings;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -64,14 +66,20 @@ builder.Services.AddAuthentication(option =>
 
 
 
-
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddProfile<MappingProfile>();
+});
 builder.Services.AddScoped<IUnitOfWork , UnitOfWork>();
 builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITeacherService, TeacherService>();
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
+builder.Services.AddScoped<IClassroomService, ClassroomService>();
+builder.Services.AddScoped<IAttendancesService, AttendanceService>();
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
+
 
 var app = builder.Build();
 

@@ -15,8 +15,6 @@ namespace StudentBusinessLayer.Interfaces
         Task<bool> DeleteStudent(int id);
         Task<Student>AddNewStudent(Student student);
         Task<IEnumerable <Student>> GetAllStudents();
-        Task<Student> GetStudentByName(string name);
-        Task<IEnumerable<Student>> GetPassedStudents(int? skip , int? take);
         Task<IEnumerable<Student>> GetStudentsByAgeOrder(int? skip, int? take );
 
     }

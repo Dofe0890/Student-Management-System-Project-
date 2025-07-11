@@ -16,7 +16,7 @@ namespace StudentBusinessLayer.DTOs
 
         [Range(6, 100)]
         public int Age { get; set; }
-
+        [Required]
         public int ClassroomId { get; set; }
 
        

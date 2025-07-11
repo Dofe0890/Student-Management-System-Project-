@@ -17,7 +17,7 @@ namespace StudentManagementAPI.Controllers
             _authService = authService;
         }
 
-
+/*
         [HttpPost("register")]
         public async Task<IActionResult> RegisterAsync([FromBody] RegisterModel Model)
         {
@@ -55,7 +55,7 @@ namespace StudentManagementAPI.Controllers
                 SetRefreshTokenInCookie(result.RefreshToken, result.RefreshTokenExpiration );
 
             return Ok(result);
-        }
+        }*/
 
         [HttpPost("addrole")]
         public async Task<IActionResult> AddRoleAsync([FromBody] AddRoleModel Model)

@@ -15,5 +15,6 @@ namespace StudentBusinessLayer.Interfaces
         Task<Classroom> GetClassByIdWithDetails(int classroomId);
         Task<Classroom> GetClassByName(string name);
         Task<bool> DeleteClassroomAsync(int classroomId);
+        Task<bool> EditClassroomAsync(int classroomId , string newClassroomName);
     }
 }
