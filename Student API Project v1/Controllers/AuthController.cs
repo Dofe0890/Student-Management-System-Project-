@@ -17,27 +17,9 @@ namespace StudentManagementAPI.Controllers
             _authService = authService;
         }
 
-/*
-        [HttpPost("register")]
-        public async Task<IActionResult> RegisterAsync([FromBody] RegisterModel Model)
-        {
-          if(!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-          var result = await _authService.RegisterAsync(Model);
 
-            if(!result.IsAuthenticated)
-            {
-                return BadRequest (result.Meassage );
-            }
 
-                SetRefreshTokenInCookie(result.RefreshToken, result.RefreshTokenExpiration);
-
-            return Ok(result);
-        }
-
-        [HttpPost("token")]
+        [HttpPost("GetToken")]
         public async Task<IActionResult> GetTokenAsync([FromBody] TokenRequestModel Model)
         {
             if (!ModelState.IsValid)
@@ -55,24 +37,9 @@ namespace StudentManagementAPI.Controllers
                 SetRefreshTokenInCookie(result.RefreshToken, result.RefreshTokenExpiration );
 
             return Ok(result);
-        }*/
-
-        [HttpPost("addrole")]
-        public async Task<IActionResult> AddRoleAsync([FromBody] AddRoleModel Model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            var result = await _authService.AddRoleAsync(Model);
-
-            if (result is not null)
-            {
-                return BadRequest(result);
-            }
-
-            return Ok(Model);
         }
+
+       
 
         [NonAction]
       public void SetRefreshTokenInCookie(string refreshToken, DateTime expires)
@@ -89,7 +56,7 @@ namespace StudentManagementAPI.Controllers
         }
 
 
-        [HttpGet ("refreshToken")]
+        [HttpGet ("RefreshToken")]
         public async Task<IActionResult> RefreashToken ()
         {
             var refreshToken = Request.Cookies["RefreshToken"];
@@ -103,7 +70,7 @@ namespace StudentManagementAPI.Controllers
         }
 
 
-        [HttpPost ("revokeToken")]
+        [HttpPost ("RevokeToken")]
         public async Task<IActionResult> RevokeToken([FromBody] RevokeToken model )
         {
             var token = model.Token ?? Request.Cookies["refreshToken"];

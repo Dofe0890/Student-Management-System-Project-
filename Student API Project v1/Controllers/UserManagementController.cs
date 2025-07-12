@@ -101,60 +101,7 @@ namespace StudentManagementAPI.Controllers
 
         }
 
-        /*
-         
-        [HttpPost("token")]
-        public async Task<IActionResult> GetTokenAsync([FromBody] TokenRequestModel Model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            var result = await _authService.GetTokenAsync(Model);
-
-            if (!result.IsAuthenticated)
-            {
-                return BadRequest(result.Meassage);
-            }
-
-            if (!string.IsNullOrEmpty(result.RefreshToken))
-                SetRefreshTokenInCookie(result.RefreshToken, result.RefreshTokenExpiration);
-
-            return Ok(result);
-        }
-
-
-
-
-        [HttpGet("refreshToken")]
-        public async Task<IActionResult> RefreashToken()
-        {
-            var refreshToken = Request.Cookies["RefreshToken"];
-            var result = await _authService.RefreshTokenAsync(refreshToken);
-            if (!result.IsAuthenticated)
-                return BadRequest(result.Meassage);
-
-            SetRefreshTokenInCookie(result.RefreshToken, result.RefreshTokenExpiration);
-
-            return Ok(result);
-        }
-
-
-        [HttpPost("revokeToken")]
-        public async Task<IActionResult> RevokeToken([FromBody] RevokeToken model)
-        {
-            var token = model.Token ?? Request.Cookies["refreshToken"];
-            if (string.IsNullOrEmpty(token))
-                return BadRequest("Token is required!");
-
-            var result = await _authService.RevokeTokenAsync(token);
-
-            if (!result)
-                return BadRequest("Token is invalid!");
-
-            return Ok("Token revoke successfully");
-
-        }*/
+     
 
     }
 }

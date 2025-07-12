@@ -20,8 +20,8 @@ namespace StudentDataAccessLayer.Models
         public int TeacherId { get; set; }
         public Teacher Teacher { get; set; }
 
-        public float Score { get; set; }
-        public DateTime DateGrade { get; set; }
+        public double Score { get; set; }
+        public DateTime DateGrade { get; set; } = DateTime.UtcNow;
 
     }
 }
