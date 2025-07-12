@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
 using StudentBusinessLayer.DTOs;
+using Microsoft.EntityFrameworkCore;
 
 namespace StudentBusinessLayer.Services
 {
@@ -20,11 +21,15 @@ namespace StudentBusinessLayer.Services
         }
         public async Task<Teacher> GetTeacherByName(string name)
         {
-            return await _unitOfWork.Teachers.FindAsync(s=>s.Name == name );
+            return await _unitOfWork.Teachers.Query().Include(t=> t.Subject)
+                .Include(t=>t.TeacherClasses).ThenInclude(tc=>tc.Classroom).
+                FirstOrDefaultAsync(t=>t.Name == name );
         }
         public async Task<Teacher> GetTeacherById(int id)
         {
-            return await _unitOfWork.Teachers.FindAsync (s=>s.Id== id);
+            return await _unitOfWork.Teachers.Query().Include(t => t.Subject)
+                 .Include(t => t.TeacherClasses).ThenInclude(tc => tc.Classroom).
+                 FirstOrDefaultAsync(t => t.Id == id);
         }
         public async Task<IEnumerable<Teacher>> GetAllTeachers()
         {

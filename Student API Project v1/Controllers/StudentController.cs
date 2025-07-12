@@ -13,12 +13,12 @@ namespace StudentManagementAPI.Controllers
    // [Authorize (Roles = "Admin")]
     [Route("api/Students")]
     [ApiController]
-    public class StudentAPIServer : ControllerBase
+    public class StudentController : ControllerBase
     {
 
         private readonly IStudentService _studentService;
         private readonly IMapper _mapper;
-        public StudentAPIServer (IStudentService studentService,IMapper mapper)
+        public StudentController (IStudentService studentService,IMapper mapper)
         { 
             _studentService = studentService;
             _mapper = mapper;

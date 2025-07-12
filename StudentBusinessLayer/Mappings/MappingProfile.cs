@@ -15,9 +15,12 @@ namespace StudentBusinessLayer.Mappings
         {
             CreateMap<Student,StudentDTO>().ReverseMap();
             CreateMap<Teacher,TeacherDTO>().ReverseMap();
+            CreateMap<Teacher, TeacherWithDetailsDTO>().ForMember(dest => dest.TeacherAssignedClasses, opt => opt.MapFrom(src => src.TeacherClasses.Select(tc => tc.Classroom)));
             CreateMap<Classroom, ClassroomDTOWithDetails>().ForMember(dest => dest.Teachers, opt => opt.MapFrom(src => src.TeacherClasses.Select(tc => tc.Teacher)));
             CreateMap<Classroom, ClassroomDTO>().ReverseMap();
             CreateMap< Attendance ,AttendanceDTO>().ReverseMap();
+            CreateMap<Subject, SubjectDTO>().ReverseMap ();
+
 
         }
     }
