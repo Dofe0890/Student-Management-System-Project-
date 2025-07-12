@@ -6,7 +6,7 @@ using StudentBusinessLayer.Interfaces;
 using StudentBusinessLayer.Services;
 using StudentDataAccessLayer.Models;
 
-namespace Student_API_Project_v1.Controllers
+namespace StudentManagementAPI.Controllers
 {
 
     [Route("api/Attendance")]

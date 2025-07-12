@@ -5,7 +5,7 @@ using StudentBusinessLayer.Interfaces;
 using StudentBusinessLayer.Model;
 using StudentDataAccessLayer.Models;
 
-namespace Student_API_Project_v1.Controllers
+namespace StudentManagementAPI.Controllers
 {
      // [Authorize (Roles = "Admin")]
     [Route("api/Users")]

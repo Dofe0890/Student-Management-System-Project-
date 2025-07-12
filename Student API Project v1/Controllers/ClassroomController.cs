@@ -3,7 +3,7 @@ using StudentBusinessLayer.DTOs;
 using StudentBusinessLayer.Interfaces;
 using StudentDataAccessLayer.Models;
 using AutoMapper;
-namespace Student_API_Project_v1.Controllers
+namespace StudentManagementAPI.Controllers
 {
     [Route("api/Classroom")]
     [ApiController]

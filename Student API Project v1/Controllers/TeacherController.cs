@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using StudentBusinessLayer.DTOs;
 using StudentBusinessLayer.Interfaces;
 
-namespace Student_API_Project_v1.Controllers
+namespace StudentManagementAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

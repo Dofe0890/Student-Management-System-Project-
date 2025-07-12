@@ -1,4 +1,4 @@
-﻿namespace Student_API_Project_v1.Controllers
+﻿namespace StudentManagementAPI.Controllers
 {
     public class GradeController
     {
