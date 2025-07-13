@@ -165,7 +165,7 @@ namespace StudentManagementAPI.Controllers
             }
 
             var gradeEntity = _mapper.Map<Grade>(updateGradeDto);
-
+            gradeEntity.Id = ID;
 
             var result = await _gradesService.UpdateGradeAsync( gradeEntity);
 
