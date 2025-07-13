@@ -20,6 +20,8 @@ namespace StudentBusinessLayer.Mappings
             CreateMap<Classroom, ClassroomDTO>().ReverseMap();
             CreateMap< Attendance ,AttendanceDTO>().ReverseMap();
             CreateMap<Subject, SubjectDTO>().ReverseMap ();
+            CreateMap<Grade, GradeDTO>().ReverseMap();
+            CreateMap<Grade, GradeWithDetailsDTO>().ReverseMap();
 
 
         }

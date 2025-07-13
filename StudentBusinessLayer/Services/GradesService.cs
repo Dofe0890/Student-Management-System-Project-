@@ -1,4 +1,5 @@
-﻿using StudentBusinessLayer.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using StudentBusinessLayer.Interfaces;
 using StudentDataAccessLayer.Interfaces;
 using StudentDataAccessLayer.Models;
 using System;
@@ -21,7 +22,7 @@ namespace StudentBusinessLayer.Services
         {
 
             if (grade == null)
-                throw new ArgumentNullException(nameof(grade));
+                return null;
 
             var result = await _unitOfWork.Grades.AddRecordAsync(grade);
 
@@ -29,11 +30,11 @@ namespace StudentBusinessLayer.Services
             return result;
         }
 
-        public async Task<Grade> AddGradeAsync(int studentId, int teacherId, int subjectId, float score)
+        public async Task<Grade> AddGradeAsync(int studentId, int teacherId, int subjectId, double score)
         {
             if(studentId <= 0 || teacherId <= 0 || subjectId <= 0 || score < 0)
             {
-                throw new ArgumentException("Invalid parameters for adding a grade.");
+                return null;
             }
 
             var grade = new Grade
@@ -85,14 +86,28 @@ namespace StudentBusinessLayer.Services
             return false;
         }
 
-        public Task<Grade> GetGradeByIdAsync(int gradeId)
+        public async Task<IEnumerable<Grade>> GetAllGradesAsync()
         {
-            return _unitOfWork.Grades.GetByIDAsync(gradeId);
+            return await _unitOfWork.Grades.GetAllAsync();
+        }
+
+        public async Task<Grade> GetGradeByIdAsync(int gradeId)
+        {
+            var result = await _unitOfWork.Grades.Query().Include(g => g.Student)
+                               .Include(g => g.Subject)
+                               .Include(g => g.Teacher)
+                               .FirstOrDefaultAsync(g => g.Id == gradeId);
+
+            return result; 
         }
 
         public async Task<IEnumerable<Grade>> GetGradesByStudentIdAsync(int studentId)
         {
-            return await _unitOfWork.Grades.FindAllAsync(s => s.StudentId == studentId,null,null);
+            var result = await _unitOfWork.Grades.Query().Include(g => g.Student)
+                             .Include(g => g.Subject)
+                             .Include(g => g.Teacher)
+                             .Where(g => g.StudentId == studentId).ToListAsync();
+            return result;
         }
 
         public async Task<bool> UpdateGradeAsync(Grade grade)
@@ -105,7 +120,7 @@ namespace StudentBusinessLayer.Services
             }
             else
             {
-                throw new Exception("Grade not found");
+                return false;
             }
 
         }
