@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic;
 using StudentBusinessLayer.Model;
 using StudentBusinessLayer.Services;
 
 namespace StudentManagementAPI.Controllers
-{ 
+{
+    [Authorize(Roles = "User")]
     [Route("api/[controller]")]
         [ApiController]
     public class AuthController : ControllerBase

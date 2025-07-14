@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudentBusinessLayer.DTOs;
 using StudentBusinessLayer.Interfaces;
@@ -7,6 +8,7 @@ using StudentDataAccessLayer.Models;
 
 namespace StudentManagementAPI.Controllers
 {
+    [Authorize(Roles = "User")]
     [Route("api/Grade")]
     [ApiController]
 

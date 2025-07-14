@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudentBusinessLayer.DTOs;
 using StudentBusinessLayer.Interfaces;
 
 namespace StudentManagementAPI.Controllers
 {
+    [Authorize(Roles = "User")]
     [Route("api/[controller]")]
     [ApiController]
     public class SubjectController : ControllerBase

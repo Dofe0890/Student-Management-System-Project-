@@ -11,6 +11,7 @@ using StudentBusinessLayer.Helper;
 using StudentDataAccessLayer.Interfaces;
 using StudentBusinessLayer.Mappings;
 using Microsoft.Extensions.DependencyInjection;
+using Student_API_Project_v1.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -91,6 +92,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseMiddleware<RateLimitingMiddleware >();
 app.UseRouting();
 app.UseHttpsRedirection();
 

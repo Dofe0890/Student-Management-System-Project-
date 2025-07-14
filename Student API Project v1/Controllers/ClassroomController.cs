@@ -3,8 +3,10 @@ using StudentBusinessLayer.DTOs;
 using StudentBusinessLayer.Interfaces;
 using StudentDataAccessLayer.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 namespace StudentManagementAPI.Controllers
 {
+    [Authorize(Roles = "User")]
     [Route("api/Classroom")]
     [ApiController]
     

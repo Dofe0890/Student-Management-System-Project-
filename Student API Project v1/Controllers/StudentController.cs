@@ -10,7 +10,7 @@ using StudentBusinessLayer.Model;
 using AutoMapper;
 namespace StudentManagementAPI.Controllers
 {
-   // [Authorize (Roles = "Admin")]
+    [Authorize(Roles = "User")]
     [Route("api/Students")]
     [ApiController]
     public class StudentController : ControllerBase

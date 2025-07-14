@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.DependencyResolver;
 using StudentBusinessLayer.DTOs;
@@ -8,7 +9,7 @@ using StudentDataAccessLayer.Models;
 
 namespace StudentManagementAPI.Controllers
 {
-
+    [Authorize(Roles = "User")]
     [Route("api/Attendance")]
     [ApiController]
     public class AttendanceController : ControllerBase

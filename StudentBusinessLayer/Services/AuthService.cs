@@ -283,7 +283,13 @@ namespace StudentBusinessLayer.Services
 
             foreach (var admin in existingAdmin)
             {
-               await _userManager.RemoveFromRoleAsync(admin, "Admin");
+              var isDeleted = await _userManager.DeleteAsync(admin);
+                if (!isDeleted.Succeeded)
+                {
+                    // Optionally log or throw
+                    var errors = string.Join(", ", isDeleted.Errors.Select(e => e.Description));
+                    throw new Exception($"Failed to delete user {admin.UserName}: {errors}");
+                }
             }
 
             var result = await RegisterAsync(model);

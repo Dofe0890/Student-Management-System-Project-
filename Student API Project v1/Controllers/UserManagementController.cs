@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StudentBusinessLayer.DTOs;
 using StudentBusinessLayer.Interfaces;
@@ -7,7 +8,7 @@ using StudentDataAccessLayer.Models;
 
 namespace StudentManagementAPI.Controllers
 {
-     // [Authorize (Roles = "Admin")]
+    [Authorize (Roles = "Admin")]
     [Route("api/Users")]
     [ApiController]
     public class UserManagementController : ControllerBase
