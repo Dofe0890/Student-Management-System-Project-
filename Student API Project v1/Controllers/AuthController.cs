@@ -6,7 +6,7 @@ using StudentBusinessLayer.Services;
 
 namespace StudentManagementAPI.Controllers
 {
-    [Authorize(Roles = "User")]
+
     [Route("api/[controller]")]
         [ApiController]
     public class AuthController : ControllerBase
@@ -71,7 +71,7 @@ namespace StudentManagementAPI.Controllers
             return Ok(result);
         }
 
-
+        [Authorize]
         [HttpPost ("RevokeToken")]
         public async Task<IActionResult> RevokeToken([FromBody] RevokeToken model )
         {

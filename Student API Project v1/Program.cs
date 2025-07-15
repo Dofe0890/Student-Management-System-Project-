@@ -12,13 +12,14 @@ using StudentDataAccessLayer.Interfaces;
 using StudentBusinessLayer.Mappings;
 using Microsoft.Extensions.DependencyInjection;
 using Student_API_Project_v1.Middlewares;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+ 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -57,8 +58,8 @@ builder.Services.AddAuthentication(option =>
         ValidIssuer = jwtSetting.Issuer,
         ValidAudience = jwtSetting.Audience,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSetting.Key)),
-        ClockSkew = TimeSpan.Zero
-
+        ClockSkew = TimeSpan.FromMinutes(10),
+        RoleClaimType = ClaimTypes.Role
 
     };
 

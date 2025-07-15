@@ -9,7 +9,7 @@ using StudentDataAccessLayer.Models;
 
 namespace StudentManagementAPI.Controllers
 {
-    [Authorize(Roles = "User")]
+    [Authorize]
     [Route("api/Attendance")]
     [ApiController]
     public class AttendanceController : ControllerBase

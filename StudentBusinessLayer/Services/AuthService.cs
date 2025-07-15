@@ -158,7 +158,7 @@ namespace StudentBusinessLayer.Services
         {
             var userClaims = await _userManager.GetClaimsAsync (user);
             var roles = await _userManager .GetRolesAsync(user);
-            var roleClaims = new List<Claim>();
+            var roleClaims = roles.Select(role => new Claim(ClaimTypes.Role, role)).ToList ();
 
             foreach (var role in roles)
             {
@@ -179,14 +179,10 @@ namespace StudentBusinessLayer.Services
                 issuer: _jwt.Issuer
                 , audience: _jwt.Audience
                 , claims: claims
-                , expires: DateTime.Now.AddMinutes(_jwt.DurationInMintues)
+                , expires: DateTime.UtcNow.AddMinutes(_jwt.DurationInMintues)
                 , signingCredentials: signingCredentials);
 
                 return jwtSecurityToken;
-
-
-
-
 
         }
 
@@ -203,9 +199,9 @@ namespace StudentBusinessLayer.Services
                 return authModel;
             }
 
-            var refreshToken = user.RefreshTokens.Single (t=> t.Token == token);
+            var refreshToken = user.RefreshTokens.SingleOrDefault (t=> t.Token == token);
 
-            if(!refreshToken .IsActive)
+            if(refreshToken == null || !refreshToken .IsActive)
             {
                 authModel.IsAuthenticated = false;
                 authModel.Meassage = "Invalid token";
@@ -229,7 +225,8 @@ namespace StudentBusinessLayer.Services
             authModel .Roles = roles.ToList();
             authModel.RefreshToken = newRefreshToken.Token;
             authModel.RefreshTokenExpiration = newRefreshToken.ExpireOn;
-
+            authModel.ExpirationOn = jwtToken.ValidTo;
+            authModel.UserId = user.Id;
             return authModel;
 
 
