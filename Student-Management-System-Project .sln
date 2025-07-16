@@ -11,15 +11,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student API Project", "Stud
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "screenshots", "screenshots", "{8AC3A4FA-5A03-4F15-B170-D03EC42838A0}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\Pictures\Screenshots\attendance-controller.png.png = ..\..\..\..\Pictures\Screenshots\attendance-controller.png.png
-		..\..\..\..\Pictures\Screenshots\auth-controller.png.png = ..\..\..\..\Pictures\Screenshots\auth-controller.png.png
-		..\..\..\..\Pictures\Screenshots\classroom-controller.png.png = ..\..\..\..\Pictures\Screenshots\classroom-controller.png.png
-		..\..\..\..\Pictures\Screenshots\database-diagram.png.png = ..\..\..\..\Pictures\Screenshots\database-diagram.png.png
-		..\..\..\..\Pictures\Screenshots\grade-controller.png.png = ..\..\..\..\Pictures\Screenshots\grade-controller.png.png
-		..\..\..\..\Pictures\Screenshots\students-controller.png.png = ..\..\..\..\Pictures\Screenshots\students-controller.png.png
-		..\..\..\..\Pictures\Screenshots\subject-controller.png.png = ..\..\..\..\Pictures\Screenshots\subject-controller.png.png
-		..\..\..\..\Pictures\Screenshots\teacher-controller.png.png = ..\..\..\..\Pictures\Screenshots\teacher-controller.png.png
-		..\..\..\..\Pictures\Screenshots\user-management-controller.png.png = ..\..\..\..\Pictures\Screenshots\user-management-controller.png.png
+		all screenshots\attendance-controller.png.png = all screenshots\attendance-controller.png.png
+		all screenshots\auth-controller.png.png = all screenshots\auth-controller.png.png
+		all screenshots\classroom-controller.png.png = all screenshots\classroom-controller.png.png
+		all screenshots\database-diagram.png.png = all screenshots\database-diagram.png.png
+		all screenshots\grade-controller.png.png = all screenshots\grade-controller.png.png
+		all screenshots\students-controller.png.png = all screenshots\students-controller.png.png
+		all screenshots\subject-controller.png.png = all screenshots\subject-controller.png.png
+		all screenshots\teacher-controller.png.png = all screenshots\teacher-controller.png.png
+		all screenshots\user-management-controller.png.png = all screenshots\user-management-controller.png.png
 	EndProjectSection
 EndProject
 Global
