@@ -63,59 +63,54 @@ StudentManagementSystem/
 
 
 
-📸 Controller Screenshots
-👨‍🎓 StudentsController
-Endpoint Prefix: /api/students
+## 📸 Controller Screenshots
 
-Screenshot:
+---
 
+### 👨‍🎓 StudentsController  
+**Endpoint Prefix:** `/api/students`  
+![StudentsController](screenshots/students-controller.png)
 
-👩‍🏫 TeachersController
-Endpoint Prefix: /api/teachers
+---
 
+### 👩‍🏫 TeachersController  
+**Endpoint Prefix:** `/api/teachers`  
+![TeachersController](screenshots/teachers-controller.png)
 
+---
 
-Screenshot:
+### 📚 SubjectsController  
+**Endpoint Prefix:** `/api/subjects`  
+![SubjectsController](screenshots/subjects-controller.png)
 
+---
 
-📚 SubjectsController
-Endpoint Prefix: /api/subjects
+### 📝 GradesController  
+**Endpoint Prefix:** `/api/grades`  
+![GradesController](screenshots/grades-controller.png)
 
+---
 
-Screenshot:
+### 📅 AttendanceController  
+**Endpoint Prefix:** `/api/attendance`  
+![AttendanceController](screenshots/attendance-controller.png)
 
+---
 
-📝 GradesController
-Endpoint Prefix: /api/grades
+### 🔐 AuthController  
+**Endpoint Prefix:** `/api/auth`  
+![AuthController](screenshots/auth-controller.png)
 
+---
 
+### 👥 UserManagementServiceController  
+**Endpoint Prefix:** `/api/users`  
+![UserManagementServiceController](screenshots/user-management-controller.png)
 
-Screenshot:
+---
 
-
-📅 AttendanceController
-Endpoint Prefix: /api/attendance
-
-
-
-Screenshot:
-
-
-🔐 AuthController 
-Endpoint Prefix: /api/auth
-
-
-
-Screenshot:
-
-
-
-🔐 UserManagementSerivceController 
-Endpoint Prefix: /api/Users
-
-
-
-Screenshot:
+### 🗂️ Database Diagram  
+![Database Diagram](screenshots/database-diagram.png)
 
 
 
@@ -124,7 +119,7 @@ Screenshot:
 
 
 
-📌 Future Enhancements
+## 📌 Future Enhancements
 Role-based access control (Admin, Teacher, Student)
 
 Export reports as PDF
@@ -140,5 +135,5 @@ Mobile App (Flutter)
 
 
 
-📄 License
+## 📄 License
 MIT License — free to use, modify, and distribute.
