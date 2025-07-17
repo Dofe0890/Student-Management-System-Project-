@@ -120,7 +120,6 @@ StudentManagementSystem/
 
 
 ## 📌 Future Enhancements
-Role-based access control (Admin, Teacher, Student)
 
 Export reports as PDF
 
