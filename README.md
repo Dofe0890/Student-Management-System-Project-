@@ -75,19 +75,19 @@ StudentManagementSystem/
 
 ### 👩‍🏫 TeachersController  
 **Endpoint Prefix:** `/api/teachers`  
-![TeachersController](screenshots/teachers-controller.png)
+![TeacherController](screenshots/teacher-controller.png)
 
 ---
 
 ### 📚 SubjectsController  
 **Endpoint Prefix:** `/api/subjects`  
-![SubjectsController](screenshots/subjects-controller.png)
+![SubjectController](screenshots/subject-controller.png)
 
 ---
 
 ### 📝 GradesController  
 **Endpoint Prefix:** `/api/grades`  
-![GradesController](screenshots/grades-controller.png)
+![GradeController](screenshots/grade-controller.png)
 
 ---
 
